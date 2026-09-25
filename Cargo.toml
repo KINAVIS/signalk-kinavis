@@ -1,0 +1,38 @@
+[package]
+name = "signalk-kinavis"
+description = "KINAVIS collision watch for Signal K: CPA, TCPA and the COLREGs ruling for every target, as a WASM plugin."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KINAVIS/signalk-kinavis"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# The adapter and everything it assesses with; `unsafe` lives only here, in
+# the host interface, never in the KINAVIS crates.
+kinavis-signalk = { path = "../kinavis/crates/kinavis-signalk" }
+serde_json = "1"
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"
+
+[lints.rust]
+missing_docs = "deny"
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+undocumented_unsafe_blocks = "deny"
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+indexing_slicing = "deny"

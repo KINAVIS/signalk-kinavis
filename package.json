@@ -1,0 +1,35 @@
+{
+  "name": "signalk-kinavis",
+  "version": "0.1.0",
+  "description": "KINAVIS collision watch for Signal K: CPA, TCPA and the COLREGs ruling for every target",
+  "keywords": [
+    "signalk-wasm-plugin",
+    "signalk-category-safety",
+    "ais",
+    "colregs",
+    "cpa",
+    "collision-avoidance"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KINAVIS/signalk-kinavis"
+  },
+  "scripts": {
+    "build": "cargo build --release --target wasm32-wasip1",
+    "postbuild": "cp target/wasm32-wasip1/release/signalk_kinavis.wasm plugin.wasm"
+  },
+  "files": ["plugin.wasm", "README.md", "LICENSE-MIT", "LICENSE-APACHE"],
+  "signalk-plugin-enabled-by-default": false,
+  "wasmManifest": "plugin.wasm",
+  "wasmCapabilities": {
+    "network": false,
+    "storage": "none",
+    "dataRead": true,
+    "dataWrite": true,
+    "putHandlers": false
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
