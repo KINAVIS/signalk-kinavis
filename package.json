@@ -17,9 +17,15 @@
   },
   "scripts": {
     "build": "cargo build --release --target wasm32-wasip1",
-    "postbuild": "cp target/wasm32-wasip1/release/signalk_kinavis.wasm plugin.wasm"
+    "postbuild": "cp target/wasm32-wasip1/release/signalk_kinavis.wasm plugin.wasm",
+    "test": "node tests/exports.mjs plugin.wasm && tests/e2e/run.sh"
   },
-  "files": ["plugin.wasm", "README.md", "LICENSE-MIT", "LICENSE-APACHE"],
+  "files": [
+    "plugin.wasm",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE"
+  ],
   "signalk-plugin-enabled-by-default": false,
   "wasmManifest": "plugin.wasm",
   "wasmCapabilities": {

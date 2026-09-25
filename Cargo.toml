@@ -14,7 +14,7 @@ crate-type = ["cdylib"]
 [dependencies]
 # The adapter and everything it assesses with; `unsafe` lives only here, in
 # the host interface, never in the KINAVIS crates.
-kinavis-signalk = { path = "../kinavis/crates/kinavis-signalk" }
+kinavis-signalk = "0.1"
 serde_json = "1"
 
 [profile.release]
