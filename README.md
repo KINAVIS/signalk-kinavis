@@ -59,6 +59,19 @@ ln -s "$PWD" ~/.signalk/node_modules/signalk-kinavis
 Restart the server, then enable *KINAVIS collision watch* under Server →
 Plugin Config.
 
+## Tests
+
+```sh
+npm run build && npm test
+```
+
+`npm test` checks the plugin's exports, then runs Signal K server 2.33 with
+the plugin on recorded AIS traffic off Harlingen (`tests/e2e/data/`, from the
+Signal K server samples) and requires the Rule 15 alarm that traffic holds. It
+installs the server into a temporary directory unless `SIGNALK_SERVER` names
+one, and gives the server a configuration directory of its own. CI runs the
+same, and builds on the MSRV and stable.
+
 ## Design
 
 The assessment is the `kinavis-signalk` crate: plain Rust, tested without a
