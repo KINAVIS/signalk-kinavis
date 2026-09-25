@@ -1,5 +1,68 @@
+# Build output: cargo's target, and the plugin copied out of it by
+# `npm run build`. CI builds and uploads plugin.wasm; it is never committed.
 /target
 /plugin.wasm
-/node_modules
+
+# Cargo.lock is intentionally NOT ignored: the plugin is a binary, and its
+# lock file makes the build reproducible.
+
+# npm: dependencies, `npm pack` tarballs and logs. package-lock.json is not
+# written: the package has no npm dependencies.
+/node_modules/
 *.tgz
+npm-debug.log*
+.npm/
+
+# Registry tokens never belong in the tree, for cargo or npm.
+.cargo/credentials
+.cargo/credentials.toml
+.npmrc
+
+# Python helpers in tests/e2e/
+__pycache__/
+*.py[cod]
+
+# Coverage and profiling output
+*.profraw
+*.profdata
+/lcov.info
+/coverage/
+
+# Tool leftovers
+*.rs.bk
+*.orig
+*.rej
+
+# Local environment and secrets
+.env
+.env.*
+.envrc
+.direnv/
+
+# AI assistants: local settings, memory and session files
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+
+# Editors
+.idea/
+*.iml
+.vscode/
+.zed/
+.fleet/
+.helix/
+*.swp
+*.swo
+.*.sw?
+*~
+\#*\#
+.\#*
+
+# Operating system clutter
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
